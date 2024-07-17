@@ -1,80 +1,101 @@
 <!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>Monty Jackson's CV</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="icon" type="image/svg+xml" href="images/photo.jpg" id="favicon-svg">
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<head>
+    <title>Monty Jackson's CV</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" type="image/svg+xml" href="images/photo.jpg" id="favicon-svg">
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        .pdf-container {
+            width: 75%; /* Scale down to 75% */
+            height: 75%; /* Scale down to 75% */
+            margin: auto; /* Center the container */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        embed {
+            width: 100%;
+            height: 100%;
+        }
+		 /* Resize logos */
+		 .icons img {
+            width: 24px; /* Adjust the size as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<!-- Wrapper -->
+<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Monty Jackson's CV</a>
-					</header>
+    <!-- Header -->
+    <header id="header">
+        <a href="CV.html" class="logo">Monty Jackson's CV</a>
+    </header>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li></li><a href="index.html">About me</a></li>
-							<li class="active"></li><a href="CV.html">CV</a></li>
-							<!-- <li><a href="Work.html">Work</a></li> -->
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/monty-jackson/"><img src="images/LI-In-Bug.png" alt="LinkedIn"><span class="label"></a></span></li>
-							<li><a href="https://eeci.github.io/home/docs/people/monty/"><img src="https://eeci.github.io/home/assets/images/Logo88x88.png" alt="EECI"></a><span class="label"></span></li>
-							<li><a href="https://www.fibe-cdt.eng.cam.ac.uk/staff/monty-jackson"><img src="https://www.fibe-cdt.eng.cam.ac.uk/sites/www.fibe-cdt.eng.cam.ac.uk/files/fibe2_0.jpg" alt="FIBE"></a><span class="label"></span></li>
-							<li><a href="https://github.com/montyjackson" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+    <!-- Nav -->
+    <nav id="nav">
+        <ul class="links">
+            <li><a href="index.html">About me</a></li>
+            <li class="active"><a href="CV.html">CV</a></li>
+        </ul>
+        <ul class="icons">
+            <li><a href="https://www.linkedin.com/in/monty-jackson/"><img src="images/LI-In-Bug.png" alt="LinkedIn"></a></li>
+            <li><a href="https://eeci.github.io/home/docs/people/monty/"><img src="https://eeci.github.io/home/assets/images/Logo88x88.png" alt="EECI"></a></li>
+            <li><a href="https://www.fibe-cdt.eng.cam.ac.uk/staff/monty-jackson"><img src="https://www.fibe-cdt.eng.cam.ac.uk/sites/www.fibe-cdt.eng.cam.ac.uk/files/fibe2_0.jpg" alt="FIBE"></a></li>
+            <li><a href="https://github.com/montyjackson" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+        </ul>
+    </nav>
 
-				<!-- Main -->
-					<div id="main">
+    <!-- Main -->
+    <div id="main">
+        <article class="post featured">
+            <header class="major">
+                <div class="pdf-container">
+                    <embed src="Monty Jackson's CV.pdf" type="application/pdf">
+                </div>
+                <p>If the PDF does not display, you can <a href="Monty Jackson's CV.pdf">download it here</a>.</p>
+            </header>
+        </article>
+    </div>
 
-						<!-- Post -->
-						<embed src="Monty Jackson's CV.pdf" width="600" height="500" type="application/pdf">
-						<p>If the PDF does not display, you can <a href="Monty Jackson's CV.pdf">download it here</a>.</p>
+    <!-- Footer -->
+    <footer id="footer">
+        <section>
+            <h3>Social</h3>
+            <ul class="icons">
+                <li><a href="https://www.linkedin.com/in/monty-jackson/"><img src="images/LI-In-Bug.png" alt="LinkedIn"></a></li>
+                <li><a href="https://eeci.github.io/home/docs/people/monty/"><img src="https://eeci.github.io/home/assets/images/Logo88x88.png" alt="EECI"></a></li>
+                <li><a href="https://www.fibe-cdt.eng.cam.ac.uk/staff/monty-jackson"><img src="https://www.fibe-cdt.eng.cam.ac.uk/sites/www.fibe-cdt.eng.cam.ac.uk/files/fibe2_0.jpg" alt="FIBE"></a></li>
+                <li><a href="https://github.com/montyjackson" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+            </ul>
+        </section>
+    </footer>
 
-					</div>
+    <!-- Copyright -->
+    <div id="copyright">
+        <ul><li>&copy; Monty Jackson</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+    </div>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<h3>Social</h3>
-							<ul class="icons">
-								<li><a href="https://www.linkedin.com/in/monty-jackson/"><img src="images/LI-In-Bug.png" alt="LinkedIn"><span class="label"></a></span></li>
-								<li><a href="https://eeci.github.io/home/docs/people/monty/"><img src="https://eeci.github.io/home/assets/images/Logo88x88.png" alt="EECI"><span class="label"></span></a></li>
-								<li><a href="https://www.fibe-cdt.eng.cam.ac.uk/staff/monty-jackson"><img src="https://www.fibe-cdt.eng.cam.ac.uk/sites/www.fibe-cdt.eng.cam.ac.uk/files/fibe2_0.jpg" alt="FIBE"><span class="label"></span></a></li>
-								<li><a href="https://github.com/montyjackson" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							</ul>
-						</section>
-					</footer>
+</div>
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Monty Jackson</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+</body>
 </html>
