@@ -702,6 +702,7 @@
     <div style="padding:20px 28px;">
       <form id="contactForm" class="contact-form">
       <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="timestamp" id="timestamp">
 
         <div class="form-row">
           <label class="sr-only">Name</label>
@@ -820,6 +821,8 @@
     const form = document.getElementById('contactForm');
     if (!form) return;
 
+    document.getElementById("timestamp").value = Date.now();
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -838,7 +841,8 @@
             name: data.get("name"),
             email: data.get("email"),
             message: data.get("message"),
-            company: data.get("company")
+            company: data.get("company"),
+            timestamp: data.get("timestamp")
           })
         });
 
