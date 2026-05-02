@@ -521,9 +521,9 @@
         retrofits for NHS hospital buildings at the University of Cambridge.
       </p>
       <div class="hero-actions reveal">
-        <a class="btn primary" href="/cdn-cgi/l/email-protection#3d50570b0e0b7d5e5c50135c5e134856">
+        <a class="btn primary" href="mailto:mj636@cam.ac.uk">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"></path><path d="M4 6l8 7 8-7"></path></svg>
-          <span class="__cf_email__" data-cfemail="b2dfd8848184f2d1d3df9cd3d19cc7d9">[email&#160;protected]</span>
+          <span>mj636@cam.ac.uk</span>
         </a>
         <button class="btn" id="openPubs">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h11l5 5v11H4z"></path><path d="M15 4v5h5"></path><path d="M8 13h8M8 17h6"></path></svg>
@@ -577,21 +577,22 @@
     </div>
     <div>
       <p>
-        My background is in Architectural Engineering (BSc, University of Plymouth)
-        and Architectural &amp; Energy Engineering (MRes FIBE2 CDT, University of
-        Cambridge). I am currently working towards a PhD in Hospital Energy Retrofit
-        at the University of Cambridge, alongside professional work on energy
-        efficiency and decarbonisation in the healthcare, science &amp; technology
-        sector.
+        My background is in Architectural &amp; Energy Engineering. I am currently working towards 
+        a PhD in Hospital Energy Retrofit at the University of Cambridge, alongside 
+        strategic and technical contributions to Complimind, an
+        AI-powered startup focused on compliance and estates management in healthcare.
       </p>
       <p>
         My research focuses on improving the energy performance of NHS hospital
         buildings in England by leveraging open-source datasets and machine learning
         to inform scalable decarbonisation strategies. Starting from a large-scale
-        quantitative assessment of energy-use trends — enriched with contextual and
-        free-text analysis — I am developing predictive models, data-driven
-        typologies, and a prototype decision-support tool to help NHS estates teams
-        identify and prioritise interventions.
+        quantitative assessment of energy-use trends, enriched with contextual
+        analysis and qualitative interviews with NHS estates professionals, I am
+        developing predictive models, data-driven typologies, and a prototype
+        decision-support tool to help NHS estates teams identify and prioritise
+        interventions across complex, mixed-use hospital estates. Future work will
+        extend this through advanced machine learning approaches to better capture
+        the operational and physical diversity of the NHS estate.
       </p>
     </div>
   </section>
@@ -607,7 +608,7 @@
         <div class="when">2024 — Now</div>
         <div class="what">
           <div class="title">PhD, Energy Efficient Healthcare Buildings</div>
-          <div class="place">University of Cambridge</div>
+          <div class="place"><a class="place-link" href="https://eeci.github.io/home/docs/people/monty/" target="_blank" rel="noopener">University of Cambridge — EECi ↗</a></div>
         </div>
         <div class="where">Cambridge, UK</div>
       </div>
@@ -615,7 +616,7 @@
         <div class="when">2023 — 2024</div>
         <div class="what">
           <div class="title">MRes, Future Infrastructure &amp; Built Environment</div>
-          <div class="place">University of Cambridge — FIBE2 CDT</div>
+          <div class="place"><a class="place-link" href="https://www.fibe-cdt.eng.cam.ac.uk/people/monty-jackson" target="_blank" rel="noopener">University of Cambridge — FIBE2 CDT ↗</a></div>
         </div>
         <div class="where">Cambridge, UK</div>
       </div>
@@ -643,7 +644,15 @@
           <div class="title">Research Lead</div>
           <a class="place-link" href="https://complimind.co.uk/" target="_blank" rel="noopener">CompliMind ↗</a>
         </div>
-        <div class="where">Remote</div>
+        <div class="where">Cambridge, UK</div>
+      </div>
+      <div class="row">
+        <div class="when">Oct 2024 — Now</div>
+        <div class="what">
+          <div class="title">Supervisor</div>
+          <div class="place">University of Cambridge</div>
+        </div>
+        <div class="where">Cambridge, UK</div>
       </div>
       <div class="row">
         <div class="when">Jun — Jul 2023</div>
@@ -651,7 +660,7 @@
           <div class="title">Sustainability &amp; Building Physics Consultant</div>
           <div class="place">Buro Happold</div>
         </div>
-        <div class="where">London, UK</div>
+        <div class="where">Bath, UK</div>
       </div>
       <div class="row">
         <div class="when">2021 — 2022</div>
@@ -659,7 +668,7 @@
           <div class="title">Technical Services Manager</div>
           <div class="place">ISG Ltd</div>
         </div>
-        <div class="where">UK</div>
+        <div class="where">London, UK</div>
       </div>
     </div>
   </section>
@@ -709,7 +718,33 @@
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<!-- Local decoder for Cloudflare-style email obfuscation so GitHub Pages shows a working mailto -->
+<script>
+  (function(){
+    try {
+      var spans = document.querySelectorAll('.__cf_email__');
+      for (var i = 0; i < spans.length; i++) {
+        var span = spans[i];
+        var cf = span.getAttribute('data-cfemail');
+        if (!cf) continue;
+        var key = parseInt(cf.substr(0,2), 16);
+        var out = '';
+        for (var n = 2; n < cf.length; n += 2) {
+          out += String.fromCharCode(parseInt(cf.substr(n,2), 16) ^ key);
+        }
+        span.textContent = out;
+        var parent = span.closest('a');
+        if (parent) {
+          var href = parent.getAttribute('href') || '';
+          if (href.indexOf('/cdn-cgi/l/email-protection') !== -1) {
+            parent.setAttribute('href', 'mailto:' + out);
+          }
+        }
+      }
+    } catch (e) { /* fail silently */ }
+  })();
+</script>
+<script>
   // Clock in topbar
   function tick() {
     const d = new Date();
