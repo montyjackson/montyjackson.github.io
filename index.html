@@ -845,13 +845,7 @@
           headers: { 'Accept': 'application/json' }
         });
         if (!res.ok) throw new Error('Network response was not ok');
-        // show inline success message and close modal shortly after
         form.innerHTML = '<p>Thanks — your message has been sent.</p>';
-        setTimeout(() => {
-          const modal = document.getElementById('contactModal');
-          if (modal) modal.classList.remove('open');
-          document.body.style.overflow = '';
-        }, 900);
       } catch (err) {
         console.error('Contact form submit error', err);
         alert('Could not send message — please try again.');
