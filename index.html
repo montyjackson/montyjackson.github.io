@@ -711,7 +711,7 @@
       </div>
     </div>
     <div style="padding:20px 28px;">
-      <form class="contact-form" action="https://formsubmit.co/mj636@cam.ac.uk" method="POST" target="_blank">
+      <form id="contactForm" class="contact-form" action="https://formsubmit.co/mj636@cam.ac.uk" method="POST">
         <input type="hidden" name="_subject" value="Website contact form submission">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
@@ -828,6 +828,38 @@
 
   setupModal('openPubs', 'pubsModal', 'closePubs');
   setupModal('openContact', 'contactModal', 'closeContact', 'closeContactAlt');
+
+  // Intercept contact form submission to avoid redirecting to FormSubmit
+  (function(){
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!res.ok) throw new Error('Network response was not ok');
+        // show inline success message and close modal shortly after
+        form.innerHTML = '<p>Thanks — your message has been sent.</p>';
+        setTimeout(() => {
+          const modal = document.getElementById('contactModal');
+          if (modal) modal.classList.remove('open');
+          document.body.style.overflow = '';
+        }, 900);
+      } catch (err) {
+        console.error('Contact form submit error', err);
+        alert('Could not send message — please try again.');
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  })();
 </script>
 
 
