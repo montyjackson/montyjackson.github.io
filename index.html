@@ -513,7 +513,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 </style>
-<style>undefined</style><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&amp;display=swa"></head>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&amp;display=swap"></head>
 <body data-new-gr-c-s-check-loaded="14.1286.0" data-gr-ext-installed="" style="font-family: Georgia;">
 <div class="page">
 
@@ -524,7 +524,7 @@
       <span>MJ — Cambridge</span>
     </div>
     <div class="meta">
-      <span id="clock">CAM 19:25 GMT</span> &nbsp;·&nbsp; AVAILABLE FOR COLLAB
+      <span id="clock">CAM 19:25 UK Time</span> &nbsp;·&nbsp; AVAILABLE FOR COLLAB
     </div>
   </div>
 
@@ -593,22 +593,10 @@
     </div>
     <div>
       <p>
-        My background is in Architectural &amp; Energy Engineering. I am currently working towards 
-        a PhD in Hospital Energy Retrofit at the University of Cambridge, alongside 
-        strategic and technical contributions to Complimind, an
-        AI-powered startup focused on compliance and estates management in healthcare.
+        My background is in Architectural &amp; Energy Engineering, and I am currently pursuing a PhD in Hospital Energy Retrofit at the University of Cambridge. My work sits at the intersection of energy, data, and decision-making, with a focus on improving how complex building portfolios are understood and managed. Alongside this, I work as Research Lead at CompliMind, where I contribute to translating healthcare estates, compliance, and digital maturity challenges into practical analytics and reporting tools for NHS and built-environment clients.
       </p>
       <p>
-        My research focuses on improving the energy performance of NHS hospital
-        buildings in England by leveraging open-source datasets and machine learning
-        to inform scalable decarbonisation strategies. Starting from a large-scale
-        quantitative assessment of energy-use trends, enriched with contextual
-        analysis and qualitative interviews with NHS estates professionals, I am
-        developing predictive models, data-driven typologies, and a prototype
-        decision-support tool to help NHS estates teams identify and prioritise
-        interventions across complex, mixed-use hospital estates. Future work will
-        extend this through advanced machine learning approaches to better capture
-        the operational and physical diversity of the NHS estate.
+        My research focuses on improving the energy performance of NHS hospital buildings in England using open-source data and machine learning. I combine large-scale quantitative analysis with insights from NHS estates professionals to better understand how buildings perform and how retrofit decisions are made in practice. I am developing data-driven models and a prototype decision-support approach to help estates teams identify and prioritise interventions across complex hospital estates, with the long-term aim of supporting scalable decarbonisation.
       </p>
     </div>
   </section>
@@ -691,7 +679,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="copy">© 2025 · MONTY JACKSON</div>
+    <div class="copy">© 2024—<span id="year"></span> · MONTY JACKSON</div>
     <div class="signature">— mj.</div>
   </footer>
 
@@ -711,10 +699,8 @@
       </div>
     </div>
     <div style="padding:20px 28px;">
-      <form id="contactForm" class="contact-form" action="https://formsubmit.co/mj636@cam.ac.uk" method="POST">
-        <input type="hidden" name="_subject" value="Website contact form submission">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
+      <form id="contactForm" class="contact-form">
+      <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="form-row">
           <label class="sr-only">Name</label>
@@ -805,7 +791,7 @@
   function tick() {
     const d = new Date();
     const time = d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London' });
-    document.getElementById('clock').textContent = `CAM ${time} GMT`;
+    document.getElementById('clock').textContent = `CAM ${time} UK Time`;
   }
   tick();
   setInterval(tick, 30000);
@@ -829,31 +815,47 @@
   setupModal('openPubs', 'pubsModal', 'closePubs');
   setupModal('openContact', 'contactModal', 'closeContact', 'closeContactAlt');
 
-  // Intercept contact form submission to avoid redirecting to FormSubmit
   (function(){
     const form = document.getElementById('contactForm');
     if (!form) return;
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
       const submitBtn = form.querySelector('button[type="submit"]');
       if (submitBtn) submitBtn.disabled = true;
+
       const data = new FormData(form);
+
       try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
+        const res = await fetch("https://contactform.montyjackson65.workers.dev/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            name: data.get("name"),
+            email: data.get("email"),
+            message: data.get("message"),
+            company: data.get("company")
+          })
         });
-        if (!res.ok) throw new Error('Network response was not ok');
+
+        if (!res.ok) throw new Error("Network response was not ok");
+
         form.innerHTML = '<p>Thanks — I will get back to you soon :)</p>';
+
       } catch (err) {
-        console.error('Contact form submit error', err);
-        alert('Could not send message — please try again.');
+        console.error("Contact form submit error", err);
+        alert("Could not send message — please try again.");
       } finally {
         if (submitBtn) submitBtn.disabled = false;
       }
     });
   })();
+</script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
 
