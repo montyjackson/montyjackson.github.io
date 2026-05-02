@@ -1,129 +1,747 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Monty Jackson</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<link rel="icon" type="image/svg+xml" href="images/photo.jpg" id="favicon-svg">
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<style> /* Resize logos */
-			.icons img {
-			   width: 24px; /* Adjust the size as needed */
-			   height: auto; /* Maintain aspect ratio */
-		   }
-		  	 /* Avatar image styling */
-			.image.avatar img {
-				width: 25vw; /* Adjust size as needed */
-				height: 25vw; /* Maintain aspect ratio */
-				border-radius: 50%; /* Makes the image circular */
-				object-fit: cover; /* Ensures the image covers the circle */
-			}
+<!DOCTYPE html><html lang="en"><head>
 
-	   </style>
-	</head>
-	<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monty Jackson — Energy Efficiency Researcher</title>
 
-				<!-- Intro -->
-					<div id="intro">
-						<a href="#" class="image avatar">
-							<img src="images/photo.jpg" alt="" />
-						</a>
-						<h1>Monty<br />
-						Jackson</h1>
-						<p>PhD candidate researching energy efficiency.</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+<style>
+  :root {
+    --bg: #f6f3ec;
+    --bg-card: #fbf9f4;
+    --ink: #1c1c1a;
+    --ink-soft: #4a4945;
+    --ink-muted: #8a8780;
+    --rule: #e2ddd1;
+    --rule-soft: #ece7da;
+    --accent: oklch(0.45 0.06 165);
+    --accent-soft: oklch(0.92 0.025 165);
+    --serif: Georgia, 'Iowan Old Style', 'Times New Roman', Times, serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+  }
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Monty Jackson</a>
-					</header>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">About me</a></li>
-							<li><a href="CV.html">CV</a></li>
-							<!-- <li><a href="Work.html">Work</a></li> -->
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/monty-jackson/"><img src="images/LI-In-Bug.png" alt="LinkedIn"><span class="label"></span></a></li>
-							<li><a href="https://eeci.github.io/home/docs/people/monty/"><img src="https://eeci.github.io/home/assets/images/Logo88x88.png" alt="EECI"><span class="label"></span></a></li>
-							<li><a href="https://www.fibe-cdt.eng.cam.ac.uk/staff/monty-jackson"><img src="https://www.fibe-cdt.eng.cam.ac.uk/sites/default/files/fibe2_0.jpg" alt="FIBE"></a><span class="label"></span></li>
-							<li><a href="mailto:mj636@cam.ac.uk"><img src="https://www.iconpacks.net/icons/1/free-mail-icon-142-thumb.png" alt="Mail"><span class="label">Email</span></a></li>
-							<li><a href="https://github.com/montyjackson" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-				<!-- Main -->
-					<div id="main">
+  body {
+    min-height: 100vh;
+    padding: clamp(24px, 4vw, 56px) clamp(20px, 5vw, 64px);
+  }
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									
-									<h2>About me<br />
-									</a>
-									<hr />
-									<div>
-										<h3>💡  Building Energy Efficiency</h3>
-										<h3>🎓  Future PhD in Hospital Energy Retrofit at the University of Cambridge</h3>
-										<h3>🎓  MRes Future Infrastructure and Built Environment at the University of Cambridge</h3>
-										<h3>🎓  BSc Architectural Engineering from the University of Plymouth</h3>
-									</div>
-									<hr />
-									</header>
-									<div>
-										<p>My background is in Architectural Engineering (BSc University of Plymouth) and Architectural and Energy Engineering (MRes FIBE2 CDT, University of Cambridge), I am currently working towards a PhD in Hospital Energy Retrofit (University of Cambridge). I have also worked on various projects in a professional capacity, focusing on energy efficiency and decarbonisation in the healthcare, science and technology sector.</p>
-										<p>My research focuses on improving the energy performance of NHS hospital buildings in England by leveraging open-source datasets and machine learning to inform scalable decarbonisation strategies. I begin with a large-scale quantitative assessment of energy use trends using open data, enriched with contextual and free-text analysis. Building on this foundation, I plan to develop predictive models, data-driven typologies, and a prototype decision-support tool aimed at helping NHS estates teams identify and prioritise decarbonisation interventions.</p>
-									</div>								
-								</ul>
-							</article>
+  .page {
+    max-width: 980px;
+    margin: 0 auto;
+  }
 
-					</div>
+  /* ============ TOP BAR ============ */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 56px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 0.02em;
+  }
+  .topbar .mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+  }
+  .topbar .mark .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .topbar .meta { text-transform: uppercase; }
 
-				<!-- Footer -->
-					<footer id="footer">
-							
-						<section>
-							<h3>Social</h3>
-							<ul class="icons">
-								<li><a href="https://www.linkedin.com/in/monty-jackson/"><img src="images/LI-In-Bug.png" alt="LinkedIn"></a><span class="label"></span></li>
-								<li><a href="https://eeci.github.io/home/docs/people/monty/"><img src="https://eeci.github.io/home/assets/images/Logo88x88.png" alt="EECI"></a><span class="label"></span></li>
-								<li><a href="https://www.fibe-cdt.eng.cam.ac.uk/staff/monty-jackson"><img src="https://www.fibe-cdt.eng.cam.ac.uk/sites/default/files/fibe2_0.jpg" alt="FIBE"></a><span class="label"></span></li>
-								<li><a href="mailto:mj636@cam.ac.uk"><img src="https://www.iconpacks.net/icons/1/free-mail-icon-142-thumb.png" alt="Mail"><span class="label">Email</span></a></li>
-								<li><a href="https://github.com/montyjackson" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							</ul>
-						</section>
+  /* ============ HERO ============ */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: end;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--rule);
+  }
 
-					</footer>
+  .hero-text .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-text .eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Monty Jackson</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(48px, 8vw, 96px);
+    line-height: 0.96;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  h1 .italic {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
 
-			</div>
+  .hero-text .role {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 38ch;
+    margin-bottom: 36px;
+  }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 
-	</body>
-</html>
+  .btn {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 11px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    line-height: 1;
+  }
+  .btn:hover {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn.primary {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .btn.primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .btn svg { width: 14px; height: 14px; }
+
+  /* photo */
+  .hero-photo {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--rule-soft);
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    filter: saturate(0.95) contrast(1.02);
+  }
+  .hero-photo .frame-label {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(28, 28, 26, 0.62);
+    padding: 6px 9px;
+    border-radius: 2px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ============ FOCUS CHIPS ============ */
+  .focus-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 56px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .focus-item {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .focus-item .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+  }
+  .focus-item .label {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .focus-item .label em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ============ SECTION ============ */
+  section.block {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: clamp(24px, 4vw, 64px);
+  }
+
+  .block-head {
+    position: sticky;
+    top: 32px;
+    align-self: start;
+  }
+  .block-head .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .block-head h2 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .block-head h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* About */
+  .about p {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 1em;
+    text-wrap: pretty;
+    max-width: 64ch;
+  }
+  .about p + p {
+    color: var(--ink-soft);
+  }
+
+  /* Timeline rows */
+  .row {
+    display: grid;
+    grid-template-columns: 130px 1fr auto;
+    gap: 24px;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .row:first-child { border-top: none; padding-top: 0; }
+  .row .when {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-muted);
+    letter-spacing: 0.02em;
+  }
+  .row .what .title {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .row .what .place {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .row .where {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .row .what a.place-link {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--ink-muted);
+    transition: color 0.15s;
+  }
+  .row .what a.place-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 48px 0 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  footer .copy {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+  }
+  footer .signature {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink);
+  }
+
+  /* ============ PUBLICATIONS MODAL ============ */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(28, 28, 26, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 100;
+  }
+  .modal-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal {
+    background: var(--bg-card);
+    border-radius: 6px;
+    width: 100%;
+    max-width: 720px;
+    max-height: 85vh;
+    overflow-y: auto;
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+  }
+  .modal-backdrop.open .modal { transform: translateY(0) scale(1); }
+
+  .modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .modal-head h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 22px;
+  }
+  .modal-head h3 em { font-style: italic; color: var(--accent); }
+  .modal-head .count {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+  }
+  .close-btn {
+    background: transparent;
+    border: 1px solid var(--rule);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    transition: all 0.15s;
+  }
+  .close-btn:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  .pub {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--rule-soft);
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+    transition: background 0.15s;
+  }
+  .pub:last-child { border-bottom: none; }
+  .pub:hover { background: var(--accent-soft); }
+
+  .pub .year {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    padding-top: 4px;
+  }
+  .pub .title {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 8px;
+    text-wrap: pretty;
+  }
+  .pub .authors {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .pub .authors strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .pub .venue {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .pub .links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .pub .links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    padding: 6px 10px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .pub .links a:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; gap: 36px; }
+    .hero-photo { aspect-ratio: 1; max-height: 360px; }
+    section.block { grid-template-columns: 1fr; gap: 24px; }
+    .block-head { position: static; }
+    .row { grid-template-columns: 100px 1fr; }
+    .row .where { grid-column: 2; font-size: 10px; }
+    .focus-strip { gap: 16px; flex-direction: column; }
+    .topbar .meta { display: none; }
+  }
+
+  /* small reveal on load */
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  .reveal:nth-child(1) { animation-delay: 0.05s; }
+  .reveal:nth-child(2) { animation-delay: 0.12s; }
+  .reveal:nth-child(3) { animation-delay: 0.20s; }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+<style>undefined</style><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&amp;display=swa"></head>
+<body data-new-gr-c-s-check-loaded="14.1286.0" data-gr-ext-installed="" style="font-family: Georgia;">
+<div class="page">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="mark">
+      <span class="dot"></span>
+      <span>MJ — Cambridge</span>
+    </div>
+    <div class="meta">
+      <span id="clock">CAM 19:25 GMT</span> &nbsp;·&nbsp; AVAILABLE FOR COLLAB
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="eyebrow reveal">PhD Researcher · Energy Efficiency</div>
+      <h1 class="reveal">Monty<br><span class="italic">Jackson.</span></h1>
+      <p class="role reveal">
+        Decarbonising the built environment — researching energy-efficient
+        retrofits for NHS hospital buildings at the University of Cambridge.
+      </p>
+      <div class="hero-actions reveal">
+        <a class="btn primary" href="/cdn-cgi/l/email-protection#3d50570b0e0b7d5e5c50135c5e134856">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"></path><path d="M4 6l8 7 8-7"></path></svg>
+          <span class="__cf_email__" data-cfemail="b2dfd8848184f2d1d3df9cd3d19cc7d9">[email&#160;protected]</span>
+        </a>
+        <button class="btn" id="openPubs">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h11l5 5v11H4z"></path><path d="M15 4v5h5"></path><path d="M8 13h8M8 17h6"></path></svg>
+          Publications
+        </button>
+        <a class="btn" href="https://www.linkedin.com/in/monty-jackson/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.71h.05c.53-1 1.83-2.06 3.76-2.06C21.4 8.65 22 11.1 22 14.27V21h-4v-5.97c0-1.42-.03-3.25-1.98-3.25-1.98 0-2.28 1.55-2.28 3.15V21h-4z"></path></svg>
+          LinkedIn
+        </a>
+        <a class="btn" href="https://github.com/montyjackson" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.01c-3.2.7-3.87-1.36-3.87-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.96 10.96 0 015.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.26 5.69.41.36.78 1.06.78 2.13v3.16c0 .31.21.68.8.56C20.21 21.39 23.5 17.08 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"></path></svg>
+          GitHub
+        </a>
+        <a class="btn" href="https://scholar.google.com/citations?hl=en&amp;user=E4bdSTEAAAAJ" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14l-9-5 9-5 9 5-9 5z"></path><path d="M3 9v3l9 5 9-5V9" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg>
+          Scholar
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo reveal">
+      <img src="assets/monty.png" alt="Monty Jackson">
+      <div class="frame-label">Cambridge · 2025</div>
+    </div>
+  </section>
+
+  <!-- FOCUS STRIP -->
+  <div class="focus-strip">
+    <div class="focus-item">
+      <span class="num">01</span>
+      <span class="label">Energy <em>efficiency</em></span>
+    </div>
+    <div class="focus-item">
+      <span class="num">02</span>
+      <span class="label">Healthcare <em>buildings</em></span>
+    </div>
+    <div class="focus-item">
+      <span class="num">03</span>
+      <span class="label">Open data &amp; <em>machine learning</em></span>
+    </div>
+    <div class="focus-item">
+      <span class="num">04</span>
+      <span class="label">NHS <em>decarbonisation</em></span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="block about">
+    <div class="block-head">
+      <div class="num">§ 01</div>
+      <h2>About<br><em>me.</em></h2>
+    </div>
+    <div>
+      <p>
+        My background is in Architectural Engineering (BSc, University of Plymouth)
+        and Architectural &amp; Energy Engineering (MRes FIBE2 CDT, University of
+        Cambridge). I am currently working towards a PhD in Hospital Energy Retrofit
+        at the University of Cambridge, alongside professional work on energy
+        efficiency and decarbonisation in the healthcare, science &amp; technology
+        sector.
+      </p>
+      <p>
+        My research focuses on improving the energy performance of NHS hospital
+        buildings in England by leveraging open-source datasets and machine learning
+        to inform scalable decarbonisation strategies. Starting from a large-scale
+        quantitative assessment of energy-use trends — enriched with contextual and
+        free-text analysis — I am developing predictive models, data-driven
+        typologies, and a prototype decision-support tool to help NHS estates teams
+        identify and prioritise interventions.
+      </p>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="block">
+    <div class="block-head">
+      <div class="num">§ 02</div>
+      <h2>Education</h2>
+    </div>
+    <div>
+      <div class="row">
+        <div class="when">2024 — Now</div>
+        <div class="what">
+          <div class="title">PhD, Energy Efficient Healthcare Buildings</div>
+          <div class="place">University of Cambridge</div>
+        </div>
+        <div class="where">Cambridge, UK</div>
+      </div>
+      <div class="row">
+        <div class="when">2023 — 2024</div>
+        <div class="what">
+          <div class="title">MRes, Future Infrastructure &amp; Built Environment</div>
+          <div class="place">University of Cambridge — FIBE2 CDT</div>
+        </div>
+        <div class="where">Cambridge, UK</div>
+      </div>
+      <div class="row">
+        <div class="when">2019 — 2023</div>
+        <div class="what">
+          <div class="title">BSc, Architectural Engineering</div>
+          <div class="place">University of Plymouth</div>
+        </div>
+        <div class="where">Plymouth, UK</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="block">
+    <div class="block-head">
+      <div class="num">§ 03</div>
+      <h2>Experience</h2>
+    </div>
+    <div>
+      <div class="row">
+        <div class="when">2025 — Now</div>
+        <div class="what">
+          <div class="title">Research Lead</div>
+          <a class="place-link" href="https://complimind.co.uk/" target="_blank" rel="noopener">CompliMind ↗</a>
+        </div>
+        <div class="where">Remote</div>
+      </div>
+      <div class="row">
+        <div class="when">Jun — Jul 2023</div>
+        <div class="what">
+          <div class="title">Sustainability &amp; Building Physics Consultant</div>
+          <div class="place">Buro Happold</div>
+        </div>
+        <div class="where">London, UK</div>
+      </div>
+      <div class="row">
+        <div class="when">2021 — 2022</div>
+        <div class="what">
+          <div class="title">Technical Services Manager</div>
+          <div class="place">ISG Ltd</div>
+        </div>
+        <div class="where">UK</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="copy">© 2025 · MONTY JACKSON · UPDATED MAY 2026</div>
+    <div class="signature">— mj.</div>
+  </footer>
+
+</div>
+
+<!-- PUBLICATIONS MODAL -->
+<div class="modal-backdrop" id="pubsModal" role="dialog" aria-modal="true" aria-labelledby="pubsTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h3 id="pubsTitle">Selected <em>publications</em></h3>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <span class="count">01 ITEM</span>
+        <button class="close-btn" id="closePubs" aria-label="Close">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="year">2025</div>
+      <div>
+        <div class="title">
+          Automated building energy modeling for energy retrofits using a large
+          language model-based multi-agent framework
+        </div>
+        <div class="authors">
+          Jie Lu, Zeyu Zheng, Max Langtry, <strong>Monty Jackson</strong>,
+          Yang Zhao, Chenxin Feng, Ruqian Zhang, Chaobo Zhang, Jian Zhang,
+          Ruchi Choudhary
+        </div>
+        <div class="venue">iScience · Vol 28, Issue 11 · Nov 2025</div>
+        <div class="links">
+          <a href="https://doi.org/10.1016/j.isci.2025.113867" target="_blank" rel="noopener">DOI ↗</a>
+          <a href="https://www.sciencedirect.com/science/article/pii/S2589004225021285" target="_blank" rel="noopener">ScienceDirect ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Clock in topbar
+  function tick() {
+    const d = new Date();
+    const time = d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London' });
+    document.getElementById('clock').textContent = `CAM ${time} GMT`;
+  }
+  tick();
+  setInterval(tick, 30000);
+
+  // Modal
+  const modal = document.getElementById('pubsModal');
+  const openBtn = document.getElementById('openPubs');
+  const closeBtn = document.getElementById('closePubs');
+
+  function openModal() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+</script>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
