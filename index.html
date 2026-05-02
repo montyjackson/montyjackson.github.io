@@ -845,7 +845,7 @@
           headers: { 'Accept': 'application/json' }
         });
         if (!res.ok) throw new Error('Network response was not ok');
-        form.innerHTML = '<p>Thanks — your message has been sent.</p>';
+        form.innerHTML = '<p>Thanks — I will get back to you soon :)</p>';
       } catch (err) {
         console.error('Contact form submit error', err);
         alert('Could not send message — please try again.');
