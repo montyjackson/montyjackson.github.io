@@ -841,13 +841,16 @@
           })
         });
 
-        if (!res.ok) throw new Error("Network response was not ok");
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(errorText);
+      }
 
         form.innerHTML = '<p>Thanks — I will get back to you soon :)</p>';
 
       } catch (err) {
         console.error("Contact form submit error", err);
-        alert("Could not send message — please try again.");
+        alert(err.message);
       } finally {
         if (submitBtn) submitBtn.disabled = false;
       }
