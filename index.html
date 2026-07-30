@@ -1,870 +1,344 @@
-<!DOCTYPE html><html lang="en"><head>
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Monty Jackson — Energy Efficiency Researcher</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-
+<meta name="description" content="Monty Jackson — PhD researcher on energy efficiency in NHS hospital buildings, University of Cambridge (EECi), and Research Lead at CompliMind.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-  :root {
-    --bg: #F4F1EC;
-    --bg-card: #FAF8F4;
-    --ink: #2C2A28;
-    --ink-soft: #55514D;
-    --ink-muted: #8A847D;
-    --rule: #DDD6CC;
-    --rule-soft: #EAE4DB;
-    --accent: #7B8C7A;
-    --accent-soft: #EDF2EB;
-    --serif: Georgia, 'Iowan Old Style', 'Times New Roman', Times, serif;
-    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+  :root{
+    --ink:#191c22;
+    --ink-2:#2b3240;
+    --ink-3:#5d6470;
+    --grey:#8b8f99;
+    --grey-2:#a4a8b2;
+    --paper:#f8f7f3;
+    --grid:#eceae2;
+    --rule:#e2e0d8;
+    --blue:#1f4fd8;
+    --blue-soft:#b9c8f2;
+    --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
   }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    color:var(--ink);
+    font-family:var(--sans);
+    background-color:var(--paper);
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:36px 36px;
+  }
+  a{color:var(--blue);text-decoration:none}
+  a:hover{color:var(--ink)}
+  .link{color:var(--blue);border-bottom:1px solid var(--blue-soft)}
+  .link:hover{color:var(--ink);border-bottom-color:var(--ink)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .sheet{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:288px 1fr;min-height:100vh}
 
-  html, body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-weight: 400;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+  /* ---- title block ---- */
+  .block{
+    border-right:1px solid var(--ink);
+    padding:36px 30px;
+    display:flex;flex-direction:column;gap:26px;
+    background:rgba(248,247,243,.92);
   }
+  .cap{font:400 10.5px/1 var(--mono);letter-spacing:.16em;color:var(--grey)}
+  .name{font:500 24px/1.16 var(--sans);letter-spacing:-.025em;margin:10px 0 0}
+  .role{font:400 13.5px/1.5 var(--sans);color:var(--ink-3);margin:7px 0 0}
+  .portrait{aspect-ratio:4/5;border:1px solid var(--ink);background:var(--grid);overflow:hidden}
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;filter:grayscale(.35) contrast(1.03)}
+  .meta{display:flex;flex-direction:column;gap:11px;padding-top:22px;border-top:1px solid var(--ink);font:400 11.5px/1.5 var(--mono)}
+  .meta div{display:grid;grid-template-columns:58px 1fr;gap:10px}
+  .meta span{color:var(--grey)}
+  .note{padding-top:22px;border-top:1px solid var(--ink);font:400 13px/1.6 var(--sans);color:var(--ink-2);margin:0}
+  .note-cta{font:inherit;background:none;border:none;padding:0;cursor:pointer;color:var(--blue);border-bottom:1px solid var(--blue-soft)}
+  .note-cta:hover{color:var(--ink);border-bottom-color:var(--ink)}
+  .elsewhere{display:flex;flex-direction:column;gap:9px;padding-top:22px;border-top:1px solid var(--ink);font:400 11.5px/1.4 var(--mono);letter-spacing:.07em}
+  .elsewhere a{color:var(--ink)}
+  .elsewhere a:hover{color:var(--blue)}
+  .stamp{margin-top:auto;font:400 10.5px/1.7 var(--mono);color:var(--grey-2)}
 
-  body {
-    min-height: 100vh;
-    padding: clamp(24px, 4vw, 56px) clamp(20px, 5vw, 64px);
+  /* ---- views ---- */
+  .views{display:flex;flex-direction:column;background:rgba(248,247,243,.7)}
+  .views > input{position:absolute;opacity:0;pointer-events:none}
+  .tabs{display:flex;border-bottom:1px solid var(--ink);flex-wrap:wrap}
+  .tabs label{
+    font:400 11.5px/1 var(--mono);letter-spacing:.1em;
+    padding:14px 18px;cursor:pointer;
+    border:1px solid var(--ink);border-top:none;border-bottom:none;
+    border-left:none;
+    background:transparent;color:var(--ink);
   }
+  .tabs label:hover{background:rgba(31,79,216,.06)}
+  .panel{display:none;padding:44px 48px 56px}
+  #v1:checked ~ .tabs label[for=v1],
+  #v2:checked ~ .tabs label[for=v2],
+  #v3:checked ~ .tabs label[for=v3]{background:var(--blue);border-color:var(--blue);color:var(--paper)}
+  #v1:focus-visible ~ .tabs label[for=v1],
+  #v2:focus-visible ~ .tabs label[for=v2],
+  #v3:focus-visible ~ .tabs label[for=v3]{outline:2px solid var(--blue);outline-offset:-5px}
+  #v1:checked ~ #p1,#v2:checked ~ #p2,#v3:checked ~ #p3{display:block}
 
-  .page {
-    max-width: 980px;
-    margin: 0 auto;
-  }
+  .stack{display:flex;flex-direction:column;gap:44px}
+  h1{font:400 42px/1.14 var(--sans);letter-spacing:-.032em;margin:0 0 22px;max-width:24ch;text-wrap:pretty}
+  .lede{font:400 16.5px/1.72 var(--sans);color:var(--ink-2);margin:0 0 14px;max-width:62ch;text-wrap:pretty}
+  .lede.soft{color:var(--ink-3);margin-bottom:0}
+  .vcap{font:400 10.5px/1 var(--mono);letter-spacing:.16em;color:var(--blue);margin-bottom:18px}
 
-  /* ============ TOP BAR ============ */
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--rule);
-    margin-bottom: 56px;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--ink-muted);
-    letter-spacing: 0.02em;
-  }
-  .topbar .mark {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--ink);
-  }
-  .topbar .mark .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-  .topbar .meta { text-transform: uppercase; }
+  .focus{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;border-top:1px solid var(--ink)}
+  .focus div{display:grid;grid-template-columns:30px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule);font:400 15px/1.5 var(--sans)}
+  .focus div:nth-child(3),.focus div:nth-child(4){border-bottom:1px solid var(--ink)}
+  .focus b{font:400 11px/1.6 var(--mono);color:var(--grey)}
 
-  /* ============ HERO ============ */
-  .hero {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: clamp(32px, 5vw, 72px);
-    align-items: end;
-    padding-bottom: 56px;
-    border-bottom: 1px solid var(--rule);
-  }
+  .schedule{display:flex;flex-direction:column;border-top:1px solid var(--ink)}
+  .schedule div{display:grid;grid-template-columns:140px 1fr 232px;gap:18px;padding:13px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+  .schedule div:last-child{border-bottom:1px solid var(--ink)}
+  .schedule .when{font:400 12px/1.4 var(--mono);color:var(--grey)}
+  .schedule .what{font:400 15.5px/1.4 var(--sans)}
+  .schedule .sub{display:block;font:400 13px/1.5 var(--sans);color:var(--grey-2);margin-top:4px}
+  .schedule .where{font:400 13.5px/1.45 var(--sans);color:var(--ink-3);text-wrap:balance}
+  .schedule .where .link{white-space:nowrap}
 
-  .hero-text .eyebrow {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .hero-text .eyebrow::before {
-    content: '';
-    width: 24px;
-    height: 1px;
-    background: var(--accent);
-  }
+  .pub{border-top:1px solid var(--ink);padding-top:18px;max-width:64ch}
+  .pub .t{font:400 20px/1.4 var(--sans);letter-spacing:-.015em;margin-bottom:10px;text-wrap:pretty}
+  .pub .a{font:400 13.5px/1.65 var(--sans);color:var(--ink-3);margin-bottom:8px}
+  .pub .v{font:400 11px/1 var(--mono);letter-spacing:.08em;color:var(--grey);margin-bottom:14px}
+  .pub .l{display:flex;gap:18px;font:400 11px/1 var(--mono);letter-spacing:.08em}
 
-  h1 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(48px, 8vw, 96px);
-    line-height: 0.96;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 24px;
+  /* ---- contact ---- */
+  .btn-line{
+    font:400 11.5px/1 var(--mono);letter-spacing:.1em;
+    background:var(--blue);color:var(--paper);border:1px solid var(--blue);
+    padding:14px 20px;cursor:pointer;
   }
-  h1 .italic {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent);
-  }
+  .btn-line:hover{background:var(--ink);border-color:var(--ink)}
+  .btn-quiet{font:inherit;letter-spacing:inherit;background:none;border:none;padding:0;color:var(--ink);cursor:pointer;text-align:left}
+  .btn-quiet:hover{color:var(--blue)}
 
-  .hero-text .role {
-    font-family: var(--serif);
-    font-size: clamp(18px, 2vw, 22px);
-    line-height: 1.4;
-    color: var(--ink-soft);
-    max-width: 38ch;
-    margin-bottom: 36px;
+  .backdrop{
+    position:fixed;inset:0;display:none;z-index:20;
+    background:rgba(25,28,34,.42);
+    padding:24px;overflow:auto;
   }
+  .backdrop.open{display:flex;align-items:center;justify-content:center}
+  .dialog{
+    width:100%;max-width:520px;
+    background:var(--paper);border:1px solid var(--ink);
+    box-shadow:0 20px 60px rgba(25,28,34,.22);
+    padding:30px 32px 32px;
+  }
+  .dialog-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;border-bottom:1px solid var(--ink);padding-bottom:16px;margin-bottom:22px}
+  .dialog-head h2{font:400 24px/1.2 var(--sans);letter-spacing:-.025em;margin:0}
+  .x{background:none;border:none;cursor:pointer;font:400 16px/1 var(--mono);color:var(--grey);padding:4px}
+  .x:hover{color:var(--ink)}
+  .dialog p.hint{font:400 14px/1.65 var(--sans);color:var(--ink-3);margin:0 0 20px}
+  form{display:flex;flex-direction:column;gap:12px}
+  input,textarea{
+    font:400 14.5px/1.5 var(--sans);color:var(--ink);
+    background:rgba(255,255,255,.7);
+    border:1px solid var(--ink);padding:11px 13px;border-radius:0;
+  }
+  input:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+  textarea{resize:vertical}
+  .form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:6px}
+  .btn-ghost{font:400 11.5px/1 var(--mono);letter-spacing:.1em;background:none;color:var(--ink);border:1px solid var(--ink);padding:14px 20px;cursor:pointer}
+  .btn-ghost:hover{color:var(--blue);border-color:var(--blue)}
+  button[disabled]{opacity:.5;cursor:default}
+  .sent{font:400 15px/1.6 var(--sans);color:var(--ink-2);margin:0}
+  .direct{font:400 12px/1.6 var(--mono);color:var(--grey);margin:18px 0 0}
 
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .btn {
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 500;
-    padding: 11px 18px;
-    border-radius: 999px;
-    border: 1px solid var(--rule);
-    background: transparent;
-    color: var(--ink);
-    cursor: pointer;
-    transition: all 0.18s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    line-height: 1;
-  }
-  .btn:hover {
-    border-color: var(--ink);
-    background: var(--ink);
-    color: var(--bg);
-  }
-  .btn.primary {
-    background: var(--ink);
-    color: var(--bg);
-    border-color: var(--ink);
-  }
-  .btn.primary:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-  }
-  .btn svg { width: 14px; height: 14px; }
-
-  /* photo */
-  .hero-photo {
-    position: relative;
-    aspect-ratio: 4/5;
-    overflow: hidden;
-    border-radius: 4px;
-    background: var(--rule-soft);
-  }
-  .hero-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 20%;
-    display: block;
-    filter: saturate(0.95) contrast(1.02);
-  }
-  .hero-photo .frame-label {
-    position: absolute;
-    bottom: 14px;
-    left: 14px;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #fff;
-    background: rgba(28, 28, 26, 0.62);
-    padding: 6px 9px;
-    border-radius: 2px;
-    backdrop-filter: blur(4px);
-  }
-
-  /* ============ FOCUS CHIPS ============ */
-  .focus-strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px 56px;
-    padding: 36px 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  .focus-item {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-  }
-  .focus-item .num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-muted);
-    letter-spacing: 0.08em;
-  }
-  .focus-item .label {
-    font-family: var(--serif);
-    font-size: 17px;
-    color: var(--ink);
-    line-height: 1.3;
-  }
-  .focus-item .label em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  /* ============ SECTION ============ */
-  section.block {
-    padding: 72px 0;
-    border-bottom: 1px solid var(--rule);
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: clamp(24px, 4vw, 64px);
-  }
-
-  .block-head {
-    position: sticky;
-    top: 32px;
-    align-self: start;
-  }
-  .block-head .num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-muted);
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
-  }
-  .block-head h2 {
-    font-family: var(--serif);
-    font-size: 28px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-  }
-  .block-head h2 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  /* About */
-  .about p {
-    font-family: var(--serif);
-    font-size: 19px;
-    line-height: 1.6;
-    color: var(--ink);
-    margin-bottom: 1em;
-    text-wrap: pretty;
-    max-width: 64ch;
-  }
-  .about p + p {
-    color: var(--ink-soft);
-  }
-
-  /* Timeline rows */
-  .row {
-    display: grid;
-    grid-template-columns: 130px 1fr auto;
-    gap: 24px;
-    padding: 22px 0;
-    border-top: 1px solid var(--rule-soft);
-    align-items: baseline;
-  }
-  .row:first-child { border-top: none; padding-top: 0; }
-  .row .when {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--ink-muted);
-    letter-spacing: 0.02em;
-  }
-  .row .what .title {
-    font-family: var(--serif);
-    font-size: 19px;
-    line-height: 1.3;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .row .what .place {
-    font-size: 14px;
-    color: var(--ink-soft);
-  }
-  .row .where {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .row .what a.place-link {
-    color: var(--ink-soft);
-    text-decoration: none;
-    border-bottom: 1px dotted var(--ink-muted);
-    transition: color 0.15s;
-  }
-  .row .what a.place-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
-
-  /* ============ FOOTER ============ */
-  footer {
-    padding: 48px 0 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-  footer .copy {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-muted);
-    letter-spacing: 0.04em;
-  }
-  footer .signature {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 22px;
-    color: var(--ink);
-  }
-
-  /* ============ PUBLICATIONS MODAL ============ */
-  .modal-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(28, 28, 26, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-    z-index: 100;
-  }
-  .modal-backdrop.open {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .modal {
-    background: var(--bg-card);
-    border-radius: 6px;
-    width: 100%;
-    max-width: 720px;
-    max-height: 85vh;
-    overflow-y: auto;
-    transform: translateY(12px) scale(0.98);
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-    box-shadow: 0 24px 80px rgba(0,0,0,0.18);
-  }
-  .modal-backdrop.open .modal { transform: translateY(0) scale(1); }
-
-  .modal-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 22px 28px;
-    border-bottom: 1px solid var(--rule);
-  }
-  .modal-head h3 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: 22px;
-  }
-  .modal-head h3 em { font-style: italic; color: var(--accent); }
-  .modal-head .count {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-muted);
-    letter-spacing: 0.08em;
-  }
-  .close-btn {
-    background: transparent;
-    border: 1px solid var(--rule);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--ink-soft);
-    transition: all 0.15s;
-  }
-  .close-btn:hover {
-    background: var(--ink);
-    color: var(--bg);
-    border-color: var(--ink);
-  }
-
-  .pub {
-    padding: 24px 28px;
-    border-bottom: 1px solid var(--rule-soft);
-    display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 20px;
-    transition: background 0.15s;
-  }
-  .pub:last-child { border-bottom: none; }
-  .pub:hover { background: var(--accent-soft); }
-
-  .pub .year {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.04em;
-    padding-top: 4px;
-  }
-  .pub .title {
-    font-family: var(--serif);
-    font-size: 18px;
-    line-height: 1.35;
-    color: var(--ink);
-    margin-bottom: 8px;
-    text-wrap: pretty;
-  }
-  .pub .authors {
-    font-size: 13px;
-    color: var(--ink-soft);
-    line-height: 1.5;
-    margin-bottom: 8px;
-  }
-  .pub .authors strong {
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .pub .venue {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-muted);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .pub .links {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .pub .links a {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink);
-    border: 1px solid var(--rule);
-    padding: 6px 10px;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: all 0.15s;
-  }
-  .pub .links a:hover {
-    background: var(--ink);
-    color: var(--bg);
-    border-color: var(--ink);
-  }
-
-  /* Contact form inside modal */
-  .contact-form { max-width: 700px; }
-  .contact-form .form-row { margin-bottom: 12px; }
-  .form-control {
-    width: 100%;
-    padding: 10px 12px;
-    border-radius: 6px;
-    border: 1px solid var(--rule);
-    background: transparent;
-    font-family: var(--sans);
-    font-size: 14px;
-    color: var(--ink);
-  }
-  .form-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(123,140,122,0.06); }
-  .form-actions .btn { padding: 9px 14px; }
-  .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-
-  /* ============ RESPONSIVE ============ */
-  @media (max-width: 760px) {
-    .hero { grid-template-columns: 1fr; gap: 36px; }
-    .hero-photo { aspect-ratio: 1; max-height: 360px; }
-    section.block { grid-template-columns: 1fr; gap: 24px; }
-    .block-head { position: static; }
-    .row { grid-template-columns: 100px 1fr; }
-    .row .where { grid-column: 2; font-size: 10px; }
-    .focus-strip { gap: 16px; flex-direction: column; }
-    .topbar .meta { display: none; }
-  }
-
-  /* small reveal on load */
-  .reveal {
-    opacity: 0;
-    transform: translateY(8px);
-    animation: rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  }
-  .reveal:nth-child(1) { animation-delay: 0.05s; }
-  .reveal:nth-child(2) { animation-delay: 0.12s; }
-  .reveal:nth-child(3) { animation-delay: 0.20s; }
-  @keyframes rise {
-    to { opacity: 1; transform: translateY(0); }
+  @media (max-width:900px){
+    .sheet{grid-template-columns:1fr}
+    .block{border-right:none;border-bottom:1px solid var(--ink)}
+    .portrait{max-width:240px}
+    .stamp{margin-top:0}
+    .panel{padding:32px 24px 44px}
+    h1{font-size:32px}
+    .focus{grid-template-columns:1fr}
+    .focus div:nth-child(3){border-bottom:1px solid var(--rule)}
+    .schedule div{grid-template-columns:1fr;gap:4px}
+    .schedule .where{color:var(--grey)}
   }
 </style>
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&amp;display=swap"></head>
-<body data-new-gr-c-s-check-loaded="14.1286.0" data-gr-ext-installed="" style="font-family: Georgia;">
-<div class="page">
+</head>
+<body>
 
-  <!-- TOP BAR -->
-  <div class="topbar">
-    <div class="mark">
-      <span class="dot"></span>
-      <span>MJ — Cambridge</span>
+<main class="sheet">
+
+  <aside class="block">
+    <div>
+      <div class="cap">SUBJECT</div>
+      <div class="name">Monty Jackson</div>
+      <p class="role">Energy, data, and the NHS estate</p>
     </div>
+
+    <div class="portrait"><img src="assets/monty.png" alt="Monty Jackson" width="480" height="600"></div>
+
     <div class="meta">
-      <span id="clock">CAM 19:25 UK Time</span> &nbsp;·&nbsp; AVAILABLE FOR COLLAB
+      <div><span>BASED</span><p style="margin:0">Cambridge, UK</p></div>
+      <div><span>GROUP</span><p style="margin:0">Univ. of Cambridge<br>EECi</p></div>
+      <div><span>ALSO</span><p style="margin:0">CompliMind</p></div>
     </div>
-  </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-text">
-      <div class="eyebrow reveal">PhD Researcher · Energy Efficiency</div>
-      <h1 class="reveal">Monty<br><span class="italic">Jackson.</span></h1>
-      <p class="role reveal">
-        Decarbonising the built environment — researching energy-efficient
-        retrofits for NHS hospital buildings at the University of Cambridge.
-      </p>
-      <div class="hero-actions reveal">
-        <button class="btn primary" id="openContact">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4z"></path><path d="M4 6l8 7 8-7"></path></svg>
-          <span>Email me</span>
-        </button>
-        <button class="btn" id="openPubs">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h11l5 5v11H4z"></path><path d="M15 4v5h5"></path><path d="M8 13h8M8 17h6"></path></svg>
-          Publications
-        </button>
-        <a class="btn" href="https://www.linkedin.com/in/monty-jackson/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.71h.05c.53-1 1.83-2.06 3.76-2.06C21.4 8.65 22 11.1 22 14.27V21h-4v-5.97c0-1.42-.03-3.25-1.98-3.25-1.98 0-2.28 1.55-2.28 3.15V21h-4z"></path></svg>
-          LinkedIn
-        </a>
-        <a class="btn" href="https://github.com/montyjackson" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.01c-3.2.7-3.87-1.36-3.87-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.24 3.34.95.1-.74.4-1.24.72-1.53-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.96 10.96 0 015.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.41-5.26 5.69.41.36.78 1.06.78 2.13v3.16c0 .31.21.68.8.56C20.21 21.39 23.5 17.08 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"></path></svg>
-          GitHub
-        </a>
-        <a class="btn" href="https://scholar.google.com/citations?hl=en&amp;user=E4bdSTEAAAAJ" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14l-9-5 9-5 9 5-9 5z"></path><path d="M3 9v3l9 5 9-5V9" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg>
-          Scholar
-        </a>
+    <p class="note">Happy to chat with anyone working on healthcare estates. <button type="button" class="note-cta" data-open-contact>Get in touch ↗</button></p>
+
+    <nav class="elsewhere">
+      <a href="https://scholar.google.com/citations?hl=en&amp;user=E4bdSTEAAAAJ" target="_blank" rel="noopener">SCHOLAR</a>
+      <a href="https://github.com/montyjackson" target="_blank" rel="noopener">GITHUB</a>
+      <a href="https://www.linkedin.com/in/monty-jackson/" target="_blank" rel="noopener">LINKEDIN</a>
+    </nav>
+
+    <div class="stamp">SHEET 01/01<br>SCALE 1:1<br>NO ANALYTICS</div>
+  </aside>
+
+  <section class="views">
+    <input type="radio" name="view" id="v1" checked>
+    <input type="radio" name="view" id="v2">
+    <input type="radio" name="view" id="v3">
+
+    <div class="tabs">
+      <label for="v1">A · ABOUT</label>
+      <label for="v2">B · RÉSUMÉ</label>
+      <label for="v3">C · RESEARCH</label>
+    </div>
+
+    <div class="panel" id="p1">
+      <div class="stack">
+        <div>
+          <h1>Figuring out what data can tell us about hospitals.</h1>
+          <p class="lede">My background is in architectural and energy engineering. I'm a PhD researcher at the Energy Efficient Cities initiative, University of Cambridge, and Research Lead at CompliMind, where the same questions arrive with deadlines attached.</p>
+          <p class="lede soft">The work sits at the intersection of energy, data and decision-making: open-source data and machine learning on one side, interviews with NHS estates professionals on the other, and a way to prioritise retrofit across an estate too large to survey building by building.</p>
+        </div>
+
+        <div>
+          <div class="vcap">FOCUS</div>
+          <div class="focus">
+            <div><b>01</b><p style="margin:0">Energy efficiency</p></div>
+            <div><b>02</b><p style="margin:0">Hospital decarbonisation</p></div>
+            <div><b>03</b><p style="margin:0">Open data &amp; machine learning</p></div>
+            <div><b>04</b><p style="margin:0">Decision-making</p></div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="hero-photo reveal">
-      <img src="assets/monty.png" alt="Monty Jackson">
-    </div>
-  </section>
 
-  <!-- FOCUS STRIP -->
-  <div class="focus-strip">
-    <div class="focus-item">
-      <span class="num">01</span>
-      <span class="label">Energy <em>efficiency</em></span>
-    </div>
-    <div class="focus-item">
-      <span class="num">02</span>
-      <span class="label">Healthcare <em>buildings</em></span>
-    </div>
-    <div class="focus-item">
-      <span class="num">03</span>
-      <span class="label">Open data &amp; <em>machine learning</em></span>
-    </div>
-    <div class="focus-item">
-      <span class="num">04</span>
-      <span class="label">NHS <em>decarbonisation</em></span>
-    </div>
-  </div>
-
-  <!-- ABOUT -->
-  <section class="block about">
-    <div class="block-head">
-      <div class="num">§ 01</div>
-      <h2>About<br><em>me.</em></h2>
-    </div>
-    <div>
-      <p>
-        My background is in Architectural &amp; Energy Engineering, and I am currently pursuing a PhD in Hospital Energy Retrofit at the University of Cambridge. My work sits at the intersection of energy, data, and decision-making, with a focus on improving how complex building portfolios are understood and managed. Alongside this, I work as Research Lead at CompliMind, where I contribute to translating healthcare estates, compliance, and digital maturity challenges into practical analytics and reporting tools for NHS and built-environment clients.
-      </p>
-      <p>
-        My research focuses on improving the energy performance of NHS hospital buildings in England using open-source data and machine learning. I combine large-scale quantitative analysis with insights from NHS estates professionals to better understand how buildings perform and how retrofit decisions are made in practice. I am developing data-driven models and a prototype decision-support approach to help estates teams identify and prioritise interventions across complex hospital estates, with the long-term aim of supporting scalable decarbonisation.
-      </p>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section class="block">
-    <div class="block-head">
-      <div class="num">§ 02</div>
-      <h2>Education</h2>
-    </div>
-    <div>
-      <div class="row">
-        <div class="when">2024 — Now</div>
-        <div class="what">
-          <div class="title">PhD, Energy Efficient Healthcare Buildings</div>
-          <div class="place"><a class="place-link" href="https://eeci.github.io/home/docs/people/monty/" target="_blank" rel="noopener">University of Cambridge — EECi ↗&#xFE0E;</a></div>
+    <div class="panel" id="p2">
+      <div class="stack">
+        <div>
+          <div class="vcap">EXPERIENCE</div>
+          <div class="schedule">
+            <div><p class="when" style="margin:0">2025 – Present</p><p class="what" style="margin:0">Research Lead</p><p class="where" style="margin:0"><a class="link" href="https://complimind.co.uk/" target="_blank" rel="noopener">CompliMind&nbsp;↗</a></p></div>
+            <div><p class="when" style="margin:0">Oct 2024 – Present</p><p class="what" style="margin:0">Supervisor</p><p class="where" style="margin:0">University of Cambridge</p></div>
+            <div><p class="when" style="margin:0">Jun – Jul 2023</p><p class="what" style="margin:0">Sustainability &amp; Building Physics Consultant</p><p class="where" style="margin:0">Buro Happold</p></div>
+            <div><p class="when" style="margin:0">2021 – 2022</p><p class="what" style="margin:0">Technical Services Manager</p><p class="where" style="margin:0">ISG Ltd</p></div>
+          </div>
         </div>
-        <div class="where">Cambridge, UK</div>
+        <div>
+          <div class="vcap">EDUCATION</div>
+          <div class="schedule">
+            <div><p class="when" style="margin:0">2024 – Present</p><p class="what" style="margin:0">PhD, Energy Efficient Healthcare Buildings<span class="sub">Secondment to Stanford University</span></p><p class="where" style="margin:0">University of Cambridge · <a class="link" href="https://eeci.github.io/home/docs/people/monty/" target="_blank" rel="noopener">EECi&nbsp;↗</a></p></div>
+            <div><p class="when" style="margin:0">2023 – 2024</p><p class="what" style="margin:0">MRes, Future Infrastructure &amp; Built Environment</p><p class="where" style="margin:0">University of Cambridge · <a class="link" href="https://www.fibe-cdt.eng.cam.ac.uk/people/monty-jackson" target="_blank" rel="noopener">FIBE2&nbsp;CDT&nbsp;↗</a></p></div>
+            <div><p class="when" style="margin:0">2019 – 2023</p><p class="what" style="margin:0">BSc, Architectural Engineering</p><p class="where" style="margin:0">University of Plymouth</p></div>
+          </div>
+        </div>
       </div>
-      <div class="row">
-        <div class="when">2023 — 2024</div>
-        <div class="what">
-          <div class="title">MRes, Future Infrastructure &amp; Built Environment</div>
-          <div class="place"><a class="place-link" href="https://www.fibe-cdt.eng.cam.ac.uk/people/monty-jackson" target="_blank" rel="noopener">University of Cambridge — FIBE2 CDT ↗&#xFE0E;</a></div>
+    </div>
+
+    <div class="panel" id="p3">
+      <div class="stack">
+        <div>
+          <p class="lede">My research improves the energy performance of NHS hospital buildings in England using open-source data and machine learning. I combine large-scale quantitative analysis with insights from NHS estates professionals to understand both how buildings perform and how retrofit decisions are made in practice.</p>
+          <p class="lede soft">I'm developing data-driven models and a prototype decision-support approach to help estates teams identify and prioritise interventions across complex hospital estates, with the long-term aim of supporting scalable decarbonisation.</p>
         </div>
-        <div class="where">Cambridge, UK</div>
-      </div>
-      <div class="row">
-        <div class="when">2019 — 2023</div>
-        <div class="what">
-          <div class="title">BSc, Architectural Engineering</div>
-          <div class="place">University of Plymouth</div>
+        <div>
+          <div class="vcap">PUBLISHED</div>
+          <div class="pub">
+            <p class="t">Automated building energy modeling for energy retrofits using a large language model-based multi-agent framework</p>
+            <p class="a">Jie Lu, Zeyu Zheng, Max Langtry, <strong style="font-weight:600;color:var(--ink)">Monty Jackson</strong>, Yang Zhao, Chenxin Feng, Ruqian Zhang, Chaobo Zhang, Jian Zhang, Ruchi Choudhary</p>
+            <p class="v">iSCIENCE 28(11) · NOVEMBER 2025</p>
+            <p class="l">
+              <a class="link" href="https://doi.org/10.1016/j.isci.2025.113867" target="_blank" rel="noopener">DOI ↗</a>
+              <a class="link" href="https://www.sciencedirect.com/science/article/pii/S2589004225021285" target="_blank" rel="noopener">SCIENCEDIRECT ↗</a>
+            </p>
+          </div>
         </div>
-        <div class="where">Plymouth, UK</div>
       </div>
     </div>
   </section>
+</main>
 
-  <!-- EXPERIENCE -->
-  <section class="block">
-    <div class="block-head">
-      <div class="num">§ 03</div>
-      <h2>Experience</h2>
+<div class="backdrop" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" hidden>
+  <div class="dialog">
+    <div class="dialog-head">
+      <h2 id="contactTitle">Get in touch</h2>
+      <button type="button" class="x" data-close-contact aria-label="Close">✕</button>
     </div>
-    <div>
-      <div class="row">
-        <div class="when">2025 — Now</div>
-        <div class="what">
-          <div class="title">Research Lead</div>
-          <a class="place-link" href="https://complimind.co.uk/" target="_blank" rel="noopener">CompliMind ↗&#xFE0E;</a>
-        </div>
-        <div class="where">Cambridge, UK</div>
-      </div>
-      <div class="row">
-        <div class="when">Oct 2024 — Now</div>
-        <div class="what">
-          <div class="title">Supervisor</div>
-          <div class="place">University of Cambridge</div>
-        </div>
-        <div class="where">Cambridge, UK</div>
-      </div>
-      <div class="row">
-        <div class="when">Jun — Jul 2023</div>
-        <div class="what">
-          <div class="title">Sustainability &amp; Building Physics Consultant</div>
-          <div class="place">Buro Happold</div>
-        </div>
-        <div class="where">Bath, UK</div>
-      </div>
-      <div class="row">
-        <div class="when">2021 — 2022</div>
-        <div class="what">
-          <div class="title">Technical Services Manager</div>
-          <div class="place">ISG Ltd</div>
-        </div>
-        <div class="where">London, UK</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="copy">© 2024—<span id="year"></span> · MONTY JACKSON</div>
-    <div class="signature">— mj.</div>
-  </footer>
-
-</div>
- 
-<!-- CONTACT MODAL -->
-<div class="modal-backdrop" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
-  <div class="modal">
-    <div class="modal-head">
-      <div>
-        <h3 id="contactTitle">Get in <em>touch</em></h3>
-      </div>
-      <div style="display:flex; align-items:center; gap:14px;">
-        <button class="close-btn" id="closeContact" aria-label="Close">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg>
-        </button>
-      </div>
-    </div>
-    <div style="padding:20px 28px;">
-      <form id="contactForm" class="contact-form">
-      <input type="text" name="company" style="display:none" tabindex="-1" autocomplete="off">
+    <p class="hint">Happy to chat with anyone working on healthcare estates.</p>
+    <form id="contactForm">
+      <label class="sr" for="cf-name">Name</label>
+      <input id="cf-name" name="name" type="text" placeholder="Your name" required>
+      <label class="sr" for="cf-email">Email</label>
+      <input id="cf-email" name="email" type="email" placeholder="Your email" required>
+      <label class="sr" for="cf-msg">Message</label>
+      <textarea id="cf-msg" name="message" rows="6" placeholder="Message"></textarea>
+      <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
       <input type="hidden" name="timestamp" id="timestamp">
-
-        <div class="form-row">
-          <label class="sr-only">Name</label>
-          <input class="form-control" type="text" name="name" placeholder="Your name" required>
-        </div>
-        <div class="form-row">
-          <label class="sr-only">Email</label>
-          <input class="form-control" type="email" name="email" placeholder="Your email" required>
-        </div>
-        <div class="form-row">
-          <label class="sr-only">Message</label>
-          <textarea class="form-control" name="message" rows="6" placeholder="Message"></textarea>
-        </div>
-        <div class="form-row form-actions" style="margin-top:12px; display:flex; justify-content:flex-end; gap:8px;">
-          <button type="button" class="btn" id="closeContactAlt">Cancel</button>
-          <button type="submit" class="btn primary">Send</button>
-        </div>
-      </form>
-    </div>
+      <div class="form-actions">
+        <button type="button" class="btn-ghost" data-close-contact>CANCEL</button>
+        <button type="submit" class="btn-line">SEND</button>
+      </div>
+    </form>
+    <p class="direct">Goes straight to my inbox. No third parties, no tracking.</p>
   </div>
 </div>
 
-<!-- PUBLICATIONS MODAL -->
-<div class="modal-backdrop" id="pubsModal" role="dialog" aria-modal="true" aria-labelledby="pubsTitle">
-  <div class="modal">
-    <div class="modal-head">
-      <div>
-        <h3 id="pubsTitle">Selected <em>publications</em></h3>
-      </div>
-      <div style="display:flex; align-items:center; gap:14px;">
-        <span class="count">01 ITEM</span>
-        <button class="close-btn" id="closePubs" aria-label="Close">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"></path></svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="year">2025</div>
-      <div>
-        <div class="title">
-          Automated building energy modeling for energy retrofits using a large
-          language model-based multi-agent framework
-        </div>
-        <div class="authors">
-          Jie Lu, Zeyu Zheng, Max Langtry, <strong>Monty Jackson</strong>,
-          Yang Zhao, Chenxin Feng, Ruqian Zhang, Chaobo Zhang, Jian Zhang,
-          Ruchi Choudhary
-        </div>
-        <div class="venue">iScience · Vol 28, Issue 11 · Nov 2025</div>
-        <div class="links">
-          <a href="https://doi.org/10.1016/j.isci.2025.113867" target="_blank" rel="noopener">DOI ↗&#xFE0E;</a>
-          <a href="https://www.sciencedirect.com/science/article/pii/S2589004225021285" target="_blank" rel="noopener">ScienceDirect ↗&#xFE0E;</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Local decoder for Cloudflare-style email obfuscation so GitHub Pages shows a working mailto -->
 <script>
-  (function(){
-    try {
-      var spans = document.querySelectorAll('.__cf_email__');
-      for (var i = 0; i < spans.length; i++) {
-        var span = spans[i];
-        var cf = span.getAttribute('data-cfemail');
-        if (!cf) continue;
-        var key = parseInt(cf.substr(0,2), 16);
-        var out = '';
-        for (var n = 2; n < cf.length; n += 2) {
-          out += String.fromCharCode(parseInt(cf.substr(n,2), 16) ^ key);
-        }
-        span.textContent = out;
-        var parent = span.closest('a');
-        if (parent) {
-          var href = parent.getAttribute('href') || '';
-          if (href.indexOf('/cdn-cgi/l/email-protection') !== -1) {
-            parent.setAttribute('href', 'mailto:' + out);
-          }
-        }
-      }
-    } catch (e) { /* fail silently */ }
-  })();
-</script>
-<script>
-  // Clock in topbar
-  function tick() {
-    const d = new Date();
-    const time = d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/London' });
-    document.getElementById('clock').textContent = `CAM ${time} UK Time`;
-  }
-  tick();
-  setInterval(tick, 30000);
+  (function () {
+    var modal = document.getElementById('contactModal');
+    var form = document.getElementById('contactForm');
+    var opener = null;
+    function show(e){ opener = e && e.currentTarget; modal.hidden = false; modal.classList.add('open'); document.body.style.overflow='hidden'; var f=document.getElementById('cf-name'); if(f) f.focus(); }
+    function hide(){ modal.classList.remove('open'); modal.hidden = true; document.body.style.overflow=''; if(opener) opener.focus(); opener = null; }
+    document.querySelectorAll('[data-open-contact]').forEach(function(b){ b.addEventListener('click', show); });
+    document.querySelectorAll('[data-close-contact]').forEach(function(b){ b.addEventListener('click', hide); });
+    modal.addEventListener('click', function(e){ if (e.target === modal) hide(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && modal.classList.contains('open')) hide(); });
 
-  // Modal helper (supports multiple modals)
-  function setupModal(openId, modalId, closeId, altCloseId) {
-    const openBtn = document.getElementById(openId);
-    const modal = document.getElementById(modalId);
-    const closeBtn = document.getElementById(closeId);
-    const altClose = altCloseId ? document.getElementById(altCloseId) : null;
-    if (!modal) return;
-    function show() { modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function hide() { modal.classList.remove('open'); document.body.style.overflow = ''; }
-    if (openBtn) openBtn.addEventListener('click', show);
-    if (closeBtn) closeBtn.addEventListener('click', hide);
-    if (altClose) altClose.addEventListener('click', hide);
-    modal.addEventListener('click', (e) => { if (e.target === modal) hide(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) hide(); });
-  }
-
-  setupModal('openPubs', 'pubsModal', 'closePubs');
-  setupModal('openContact', 'contactModal', 'closeContact', 'closeContactAlt');
-
-  (function(){
-    const form = document.getElementById('contactForm');
-    if (!form) return;
-
-    document.getElementById("timestamp").value = Date.now();
-
-    form.addEventListener('submit', async (e) => {
+    document.getElementById('timestamp').value = Date.now();
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
-
-      const submitBtn = form.querySelector('button[type="submit"]');
-      if (submitBtn) submitBtn.disabled = true;
-
-      const data = new FormData(form);
-
+      var btn = form.querySelector('button[type=submit]');
+      if (btn) btn.disabled = true;
+      var data = new FormData(form);
       try {
-        const res = await fetch("https://contactform.montyjackson65.workers.dev/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+        var res = await fetch('https://contactform.montyjackson65.workers.dev/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            name: data.get("name"),
-            email: data.get("email"),
-            message: data.get("message"),
-            company: data.get("company"),
-            timestamp: data.get("timestamp")
+            name: data.get('name'),
+            email: data.get('email'),
+            message: data.get('message'),
+            company: data.get('company'),
+            timestamp: data.get('timestamp')
           })
         });
-
-      if (!res.ok) {
-        const errorText = await res.text();
-        throw new Error(errorText);
-      }
-
-        form.innerHTML = '<p>Thanks — I will get back to you soon :)</p>';
-
+        if (!res.ok) throw new Error(await res.text());
+        form.innerHTML = '<p class="sent">Thanks — I will get back to you soon :)</p>';
       } catch (err) {
-        console.error("Contact form submit error", err);
+        console.error('Contact form submit error', err);
         alert(err.message);
       } finally {
-        if (submitBtn) submitBtn.disabled = false;
+        if (btn) btn.disabled = false;
       }
     });
   })();
 </script>
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-
-</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
+</body>
+</html>
