@@ -65,6 +65,21 @@
   .elsewhere a:hover{color:var(--blue)}
   .stamp{margin-top:auto;font:400 10.5px/1.7 var(--mono);color:var(--grey-2)}
 
+  /* ---- expression of interest ---- */
+  .eoi{border:1px solid var(--ink);background:var(--paper)}
+  .eoi-head{background:var(--blue);padding:11px 14px;font:400 10.5px/1 var(--mono);letter-spacing:.16em;color:var(--paper)}
+  .eoi-body{padding:15px 15px 16px;display:flex;flex-direction:column;gap:11px}
+  .eoi-t{font:400 15px/1.4 var(--sans);letter-spacing:-.015em;margin:0}
+  .eoi-d{font:400 12.5px/1.55 var(--sans);color:var(--ink-3);margin:0}
+  .eoi-link{font:400 11.5px/1 var(--mono);letter-spacing:.1em;color:var(--blue);border-bottom:1px solid var(--blue-soft);padding-bottom:3px;align-self:flex-start}
+  .eoi-link:hover{color:var(--ink);border-bottom-color:var(--ink)}
+  .eoi-fine{font:400 10.5px/1.6 var(--mono);color:var(--grey);margin:4px 0 0}
+  .dialog-wide{max-width:760px;margin:auto}
+  .eoi-kicker{font:400 10.5px/1 var(--mono);letter-spacing:.16em;color:var(--blue);margin-bottom:9px}
+  .eoi-frame{border:1px solid var(--ink);background:#fff}
+  .eoi-frame iframe{width:100%;height:560px;border:none;display:block}
+  .eoi-note{font:400 11px/1.6 var(--mono);color:var(--grey);margin:14px 0 0}
+
   /* ---- views ---- */
   .views{display:flex;flex-direction:column;background:rgba(248,247,243,.65)}
   .views > input{position:absolute;opacity:0;pointer-events:none}
@@ -189,6 +204,16 @@
 
     <p class="note">Happy to chat with anyone working on healthcare estates. <button type="button" class="note-cta" data-open-contact>Get in touch ↗</button></p>
 
+    <div class="eoi">
+      <div class="eoi-head">EOI OPEN</div>
+      <div class="eoi-body">
+        <p class="eoi-t">Governing Green workshops</p>
+        <p class="eoi-d">Two half-day sessions on NHS decarbonisation. London, Jan &amp; Mar 2027.</p>
+        <a class="eoi-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=RQSlSfq9eUut41R7TzmG6fL7gHjilKBNgdWR_XCWIUpUQU04MTBZS1ZFUlU3ODFIUUpFNVZOMEtTVC4u" target="_blank" rel="noopener" data-open-eoi>EXPRESSION OF INTEREST ↗</a>
+        <p class="eoi-fine">3 MIN · 15–20 PLACES / SESSION</p>
+      </div>
+    </div>
+
     <nav class="elsewhere">
       <a href="https://scholar.google.com/citations?hl=en&amp;user=E4bdSTEAAAAJ" target="_blank" rel="noopener">SCHOLAR</a>
       <a href="https://github.com/montyjackson" target="_blank" rel="noopener">GITHUB</a>
@@ -273,6 +298,23 @@
   </section>
 </main>
 
+<div class="backdrop" id="eoiModal" role="dialog" aria-modal="true" aria-labelledby="eoiTitle" hidden>
+  <div class="dialog dialog-wide">
+    <div class="dialog-head">
+      <div>
+        <div class="eoi-kicker">GOVERNING GREEN · CSAP POLICY INNOVATION FUND</div>
+        <h2 id="eoiTitle">Workshop expression of interest</h2>
+      </div>
+      <button type="button" class="x" data-close-eoi aria-label="Close">✕</button>
+    </div>
+    <p class="hint">Two half-day sessions in London: Evidence (January 2027) and Governance (March 2027). Register your own interest, nominate colleagues, or both. About three minutes.</p>
+    <div class="eoi-frame">
+      <iframe title="Governing Green Workshop expression of interest form" data-eoi-src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=RQSlSfq9eUut41R7TzmG6fL7gHjilKBNgdWR_XCWIUpUQU04MTBZS1ZFUlU3ODFIUUpFNVZOMEtTVC4u&amp;embed=true" allowfullscreen></iframe>
+    </div>
+    <p class="eoi-note">HOSTED ON MICROSOFT FORMS · <a class="link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=RQSlSfq9eUut41R7TzmG6fL7gHjilKBNgdWR_XCWIUpUQU04MTBZS1ZFUlU3ODFIUUpFNVZOMEtTVC4u" target="_blank" rel="noopener">OPEN IN A NEW TAB ↗</a></p>
+  </div>
+</div>
+
 <div class="backdrop" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactTitle" hidden>
   <div class="dialog">
     <div class="dialog-head">
@@ -309,6 +351,31 @@
     document.querySelectorAll('[data-close-contact]').forEach(function(b){ b.addEventListener('click', hide); });
     modal.addEventListener('click', function(e){ if (e.target === modal) hide(); });
     document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && modal.classList.contains('open')) hide(); });
+
+    /* --- expression of interest modal (deep-linkable at #eoi) --- */
+    var eoi = document.getElementById('eoiModal');
+    var eoiFrame = eoi.querySelector('iframe');
+    function eoiShow(setHash){
+      if (!eoiFrame.src) eoiFrame.src = eoiFrame.getAttribute('data-eoi-src');
+      eoi.hidden = false; eoi.classList.add('open'); document.body.style.overflow='hidden';
+      if (setHash && history.replaceState) history.replaceState(null, '', '#eoi');
+    }
+    function eoiHide(){
+      eoi.classList.remove('open'); eoi.hidden = true; document.body.style.overflow='';
+      if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+    }
+    document.querySelectorAll('[data-open-eoi]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        if (e.metaKey || e.ctrlKey || e.shiftKey) return; /* let new-tab clicks through */
+        e.preventDefault(); eoiShow(true);
+      });
+    });
+    document.querySelectorAll('[data-close-eoi]').forEach(function(b){ b.addEventListener('click', eoiHide); });
+    eoi.addEventListener('click', function(e){ if (e.target === eoi) eoiHide(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && eoi.classList.contains('open')) eoiHide(); });
+    function eoiFromHash(){ if (location.hash.toLowerCase() === '#eoi') eoiShow(false); }
+    window.addEventListener('hashchange', eoiFromHash);
+    eoiFromHash();
 
     document.getElementById('timestamp').value = Date.now();
     form.addEventListener('submit', async function (e) {
