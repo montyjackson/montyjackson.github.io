@@ -79,6 +79,8 @@
   .eoi-frame iframe{width:100%;height:560px;border:none;display:block}
   .eoi-note{font:400 11px/1.6 var(--mono);color:var(--grey);margin:14px 0 0}
   .dialog.dialog-wide{max-width:760px;margin:auto}
+  .dialog.dialog-doc{max-width:860px;margin:auto}
+  .dialog-doc .eoi-frame iframe{height:min(80vh,1000px)}
 
   /* ---- views ---- */
   .views{display:flex;flex-direction:column;background:rgba(248,247,243,.65)}
@@ -125,7 +127,9 @@
   .pub .t{font:400 20px/1.4 var(--sans);letter-spacing:-.015em;margin-bottom:10px;text-wrap:pretty}
   .pub .a{font:400 13.5px/1.65 var(--sans);color:var(--ink-3);margin-bottom:8px}
   .pub .v{font:400 11px/1 var(--mono);letter-spacing:.08em;color:var(--grey);margin-bottom:14px}
-  .pub .l{display:flex;gap:18px;font:400 11px/1 var(--mono);letter-spacing:.08em}
+  .pub .l{display:flex;gap:18px;font:400 11px/1 var(--mono);letter-spacing:.08em;flex-wrap:wrap}
+  .pub + .pub{margin-top:26px;border-top-color:var(--rule)}
+  .pub .v .tag{color:var(--blue);font-weight:500}
 
   /* ---- contact ---- */
   .btn-line{
@@ -283,7 +287,18 @@
           <p class="lede soft">I'm developing data-driven models and a prototype decision-support approach to help estates teams identify and prioritise interventions across complex hospital estates, with the long-term aim of supporting scalable decarbonisation.</p>
         </div>
         <div>
-          <div class="vcap">PUBLISHED</div>
+          <div class="vcap">PUBLICATIONS</div>
+
+          <div class="pub">
+            <p class="t">Operational Energy &amp; Infrastructure Risk in NHS Hospitals: Electricity as the Binding Constraint</p>
+            <p class="a"><strong style="font-weight:600;color:var(--ink)">Monty Jackson</strong>, Ruchi Choudhary</p>
+            <p class="v"><span class="tag">POSTER</span> · EUROPEAN HEALTHCARE DESIGN · LONDON, JUNE 2026</p>
+            <p class="l">
+              <a class="link" href="assets/Monty_Jackson_EHD.pdf" target="_blank" rel="noopener"
+                 data-open-pdf data-doc-title="Operational Energy &amp; Infrastructure Risk in NHS Hospitals: Electricity as the Binding Constraint" data-doc-meta="POSTER · EUROPEAN HEALTHCARE DESIGN · LONDON, JUNE 2026">VIEW POSTER ↗</a>
+            </p>
+          </div>
+
           <div class="pub">
             <p class="t">Automated building energy modeling for energy retrofits using a large language model-based multi-agent framework</p>
             <p class="a">Jie Lu, Zeyu Zheng, Max Langtry, <strong style="font-weight:600;color:var(--ink)">Monty Jackson</strong>, Yang Zhao, Chenxin Feng, Ruqian Zhang, Chaobo Zhang, Jian Zhang, Ruchi Choudhary</p>
@@ -312,6 +327,22 @@
       <iframe title="Governing Green Workshop expression of interest form" data-eoi-src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=RQSlSfq9eUut41R7TzmG6fL7gHjilKBNgdWR_XCWIUpUQU04MTBZS1ZFUlU3ODFIUUpFNVZOMEtTVC4u&amp;embed=true" allowfullscreen></iframe>
     </div>
     <p class="eoi-note">HOSTED ON MICROSOFT FORMS · <a class="link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=RQSlSfq9eUut41R7TzmG6fL7gHjilKBNgdWR_XCWIUpUQU04MTBZS1ZFUlU3ODFIUUpFNVZOMEtTVC4u" target="_blank" rel="noopener">OPEN IN A NEW TAB ↗</a></p>
+  </div>
+</div>
+
+<div class="backdrop" id="docModal" role="dialog" aria-modal="true" aria-labelledby="docTitle" hidden>
+  <div class="dialog dialog-doc">
+    <div class="dialog-head">
+      <div>
+        <div class="eoi-kicker" id="docKicker"></div>
+        <h2 id="docTitle"></h2>
+      </div>
+      <button type="button" class="x" data-close-doc aria-label="Close">✕</button>
+    </div>
+    <div class="eoi-frame">
+      <iframe id="docFrame" title="Document preview (PDF)"></iframe>
+    </div>
+    <p class="eoi-note">PDF · <a class="link" id="docTab" href="" target="_blank" rel="noopener">OPEN IN A NEW TAB ↗</a> · <a class="link" id="docDownload" href="" download>DOWNLOAD</a></p>
   </div>
 </div>
 
@@ -376,6 +407,40 @@
     function eoiFromHash(){ if (location.hash.toLowerCase() === '#eoi') eoiShow(false); }
     window.addEventListener('hashchange', eoiFromHash);
     eoiFromHash();
+
+    /* --- document viewer: any [data-open-pdf] link opens its href inline --- */
+    var doc = document.getElementById('docModal');
+    var docFrame = document.getElementById('docFrame');
+    var docOpener = null;
+    function docShow(a){
+      var src = a.getAttribute('href');
+      if (docFrame.getAttribute('data-src') !== src){
+        docFrame.src = src + '#view=FitH';
+        docFrame.setAttribute('data-src', src);
+      }
+      document.getElementById('docTitle').textContent = a.getAttribute('data-doc-title') || 'Document';
+      document.getElementById('docKicker').textContent = a.getAttribute('data-doc-meta') || '';
+      document.getElementById('docTab').href = src;
+      document.getElementById('docDownload').href = src;
+      docOpener = a;
+      doc.hidden = false; doc.classList.add('open'); document.body.style.overflow='hidden';
+    }
+    function docHide(){
+      doc.classList.remove('open'); doc.hidden = true; document.body.style.overflow='';
+      if (docOpener) docOpener.focus();
+      docOpener = null;
+    }
+    document.querySelectorAll('[data-open-pdf]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        if (e.metaKey || e.ctrlKey || e.shiftKey) return; /* let new-tab clicks through */
+        /* inline PDF viewing is unreliable on small screens — open the file directly */
+        if (window.matchMedia('(max-width:900px)').matches) return;
+        e.preventDefault(); docShow(a);
+      });
+    });
+    document.querySelectorAll('[data-close-doc]').forEach(function(b){ b.addEventListener('click', docHide); });
+    doc.addEventListener('click', function(e){ if (e.target === doc) docHide(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && doc.classList.contains('open')) docHide(); });
 
     document.getElementById('timestamp').value = Date.now();
     form.addEventListener('submit', async function (e) {
