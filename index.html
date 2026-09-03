@@ -373,6 +373,23 @@
 
 <script>
   (function () {
+    /* --- views (deep-linkable at #about, #resume and #research) --- */
+    var viewIdsByHash = { about: 'v1', resume: 'v2', research: 'v3' };
+    var viewHashesById = { v1: 'about', v2: 'resume', v3: 'research' };
+    function viewFromHash(){
+      var id = viewIdsByHash[location.hash.slice(1).toLowerCase()];
+      if (id) document.getElementById(id).checked = true;
+    }
+    document.querySelectorAll('input[name="view"]').forEach(function(input){
+      input.addEventListener('change', function(){
+        if (!input.checked) return;
+        var hash = viewHashesById[input.id];
+        if (hash && history.replaceState) history.replaceState(null, '', location.pathname + location.search + '#' + hash);
+      });
+    });
+    window.addEventListener('hashchange', viewFromHash);
+    viewFromHash();
+
     var modal = document.getElementById('contactModal');
     var form = document.getElementById('contactForm');
     var opener = null;
